@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.l2r.dao.BlogTypeDao">
+
+	<resultMap type="BlogType" id="BlogTypeResult">
+		<result property="id" column="id"/>
+		<result property="typeName" column="typeName"/>
+		<result property="orderNo" column="orderNo"/>
+	</resultMap>
+	
+	<select id="getAllBlogType" resultMap="BlogTypeResult">
+		select * from t_blogType
+	</select>
+	
+	<select id="getBlogTypeById" parameterType="Integer" resultMap="BlogTypeResult">
+		select * from t_blogType where id=#{id}
+	</select>
+	
+	<insert id="addBlogType" useGeneratedKeys="true" keyProperty="id" parameterType="BlogType">
+		insert into t_blogType values(null,#{typeName},1)
+	</insert>
+	
+</mapper> 
